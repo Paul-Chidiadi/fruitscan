@@ -7,6 +7,11 @@ export default function Scan() {
   const [camView, setCamView] = useState("environment");
   const videoRef = useRef(null);
   const overlayRef = useRef(null);
+  const fileInputRef = useRef(null);
+
+  const handleFileClick = () => {
+    fileInputRef.current.click();
+  };
 
   useEffect(() => {
     const startWebcam = async () => {
@@ -55,7 +60,15 @@ export default function Scan() {
         <video ref={videoRef} autoPlay playsInline />
         <div className="bottom">
           <i className="bx bx-scan"></i>
-          <p>Gallery</p>
+          <p onClick={handleFileClick}>
+            Gallery
+            <input
+              type="file"
+              ref={fileInputRef}
+              style={{ display: "none" }}
+              // onChange={handleFileChange}
+            />
+          </p>
         </div>
       </div>
 
