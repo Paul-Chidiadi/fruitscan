@@ -19,24 +19,26 @@ export default function Scan() {
     const startWebcam = async () => {
       try {
         const stream = await navigator.mediaDevices.getUserMedia({
-          video: camView,
+          video: {
+            facingMode: { exact: camView }, // Try to use rear camera
+          },
           audio: false,
         });
         videoRef.current.srcObject = stream;
       } catch (error) {
         console.error(error);
-        // If using rear camera fails, try using front camera
         console.log("Attempting to use front camera...");
-        try {
-          const stream = await navigator.mediaDevices.getUserMedia({
-            video: { facingMode: "user" },
-            audio: false,
-          });
-          videoRef.current.srcObject = stream;
-        } catch (error) {
-          console.error("Error accessing camera:", error);
-          // Display error message or take appropriate action
-        }
+        // If using rear camera fails, try using front camera
+        // try {
+        //   const stream = await navigator.mediaDevices.getUserMedia({
+        //     video: { facingMode: "user" },
+        //     audio: false,
+        //   });
+        //   videoRef.current.srcObject = stream;
+        // } catch (error) {
+        //   console.error("Error accessing camera:", error);
+        //   // Display error message or take appropriate action
+        // }
       }
     };
 
