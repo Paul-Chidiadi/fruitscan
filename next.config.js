@@ -4,7 +4,7 @@ const withPWA = require("next-pwa")({
   dest: "public",
   cacheOnFrontEndNav: true,
   //   aggressiveFrontEndNavCaching: true,
-  runtimeCaching: true,
+  // runtimeCaching: true,
   reloadOnOnline: true,
   //   swMinify: true,
   sw: "service-worker.js",
