@@ -19,9 +19,7 @@ export default function Scan() {
     const startWebcam = async () => {
       try {
         const stream = await navigator.mediaDevices.getUserMedia({
-          video: {
-            facingMode: { exact: camView }, // Try to use rear camera
-          },
+          video: camView,
           audio: false,
         });
         videoRef.current.srcObject = stream;
