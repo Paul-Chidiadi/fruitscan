@@ -13,6 +13,8 @@ export default function Scan() {
     fileInputRef.current.click();
   };
 
+  console.log(camView);
+
   useEffect(() => {
     const startWebcam = async () => {
       try {
@@ -45,7 +47,7 @@ export default function Scan() {
     return () => {
       // Cleanup code if needed
     };
-  }, []);
+  });
 
   return (
     <>
