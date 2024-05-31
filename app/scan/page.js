@@ -12,7 +12,7 @@ export default function Scan() {
   const loadingRef = useRef(null);
   const responseRef = useRef(null);
   const fileInputRef = useRef(null);
-  const apiUrl = "54.221.17.210:8000/predict";
+  const apiUrl = "http://54.221.17.210:8000/predict";
 
   const handleFileClick = () => {
     fileInputRef.current.click();
