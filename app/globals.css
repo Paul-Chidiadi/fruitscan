@@ -133,7 +133,7 @@ video::-webkit-media-controls-overlay-enclosure {
 
 /* OVERLAY AND POP-UP STYLING */
 .overlay {
-  display: flex;
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
