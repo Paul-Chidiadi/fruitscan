@@ -12,7 +12,7 @@ export default function Scan() {
   const loadingRef = useRef(null);
   const responseRef = useRef(null);
   const fileInputRef = useRef(null);
-  const apiUrl = "https://dataexpo.tech:8000/predict";
+  const apiUrl = "http://dataexpo.tech:8000/predict";
 
   const handleFileClick = () => {
     fileInputRef.current.click();
