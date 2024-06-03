@@ -6,13 +6,15 @@ import React, { useState, useRef, useEffect } from "react";
 export default function Scan() {
   const [camView, setCamView] = useState("environment");
   const [response, setResponse] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
   const videoRef = useRef(null);
   const overlayRef = useRef(null);
   const canvasRef = useRef(null);
   const loadingRef = useRef(null);
   const responseRef = useRef(null);
   const fileInputRef = useRef(null);
-  const apiUrl = "54.221.17.210:8000/predict";
+  const apiUrl = "https://dataexpo.tech/predict";
+  // const apiUrl = "http://dataexpo.tech/predict";
 
   const handleFileClick = () => {
     fileInputRef.current.click();
@@ -20,7 +22,8 @@ export default function Scan() {
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
-    console.log(file);
+    const imgUrl = URL.createObjectURL(file);
+    setImageUrl(imgUrl);
     overlayRef.current.style.display = `flex`;
     loadingRef.current.style.display = `block`;
     uploadImageToBackend(file);
@@ -48,6 +51,8 @@ export default function Scan() {
 
       // Log the File object to see its properties
       console.log(file);
+      const imgUrl = URL.createObjectURL(file);
+      setImageUrl(imgUrl);
       overlayRef.current.style.display = `flex`;
       loadingRef.current.style.display = `block`;
       uploadImageToBackend(file);
@@ -171,7 +176,14 @@ export default function Scan() {
                 <i className="bx bx-check"></i>Detected
               </h1>
               <small>The scanned image is a {response} plant</small>
-              {/* <div className="scanned-image"></div> */}
+              <div className="scanned-image">
+                <Image
+                  src={imageUrl}
+                  alt="detected image"
+                  width={250}
+                  height={200}
+                />
+              </div>
             </div>
           </>
         </div>
